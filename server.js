@@ -3,7 +3,7 @@ const Net = require("net");
 const serverObj = {
   port: 8000,
   socket: null,
-  init: function () {
+  init:  () => {
     const server = new Net.Server();
     server.listen(this.port, function () {
       console.log(
@@ -28,7 +28,7 @@ const serverObj = {
       });
     });
   },
-  sendOn: function () {
+  sendOn: () => {
     return new Promise((res, rej) => {
       if (!this.socket) {
         rej(new Error("no connection with car server"));
@@ -36,6 +36,7 @@ const serverObj = {
       this.socket.once("data", (data) => {
         if (data) {
           res(data.toString());
+
         } else {
           rej(new Error("server rejected request"));
         }
@@ -44,7 +45,7 @@ const serverObj = {
     });
   },
 
-  sendOff: function () {
+  sendOff: () => {
     return new Promise((res, rej) => {
       if (!this.socket) {
         rej(new Error("no connection with car server"));
@@ -59,7 +60,7 @@ const serverObj = {
       this.socket.write("68 07 07 68 73 FD 51 01 FD 1A 00 D9 16");
     });
   },
-  getData: function () {
+  getData: () => {
     return new Promise((res, rej) => {
       if (!this.socket) {
         rej(new Error("no connection with car server"));
