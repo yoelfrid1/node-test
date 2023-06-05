@@ -1,11 +1,11 @@
 const Net = require("net");
 
 const serverObj = {
-  port: 8000,
+  port: 80,
   socket: null,
   init:  () => {
     const server = new Net.Server();
-    server.listen(this.port, function () {
+    server.listen(this.port, () => {
       console.log(
         `Server listening for connection requests on socket localhost:${this.port}`
       );
@@ -14,16 +14,16 @@ const serverObj = {
     server.on("connection", (socket) => {
       console.log("A new connection has been established.");
       this.socket = socket;
-      socket.on("data", function (data) {
+      socket.on("data",  (data) =>{
         console.log(`Data received from client: ${data.toString()}`);
       });
 
-      socket.on("end", function () {
+      socket.on("end",  () => {
         console.log("Closing connection with the client");
         this.socket = null;
       });
 
-      socket.on("error", function (err) {
+      socket.on("error",  (err) => {
         console.log(`Error: ${err}`);
       });
     });

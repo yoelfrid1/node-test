@@ -14,7 +14,7 @@ http.listen(port, () => {
 
 app.get("/on", (req, res) => {
   socketService.sendOn().then(serRes => {
-    console.log("serRes ",serRes);
+    console.log("serRes ",);
     res.send(serRes);
   }).catch(e => {
     res.status(500).send(e.message);
