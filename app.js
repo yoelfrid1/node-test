@@ -5,7 +5,6 @@ const socketService = require("./server");
 
 socketService.init();
 
-const ip = "localhost";
 const port = 3000;
 
 http.listen(port, () => {
