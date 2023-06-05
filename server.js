@@ -15,7 +15,8 @@ const serverObj = {
       console.log("A new connection has been established.");
       this.socket = socket;
       socket.on("data",  (data) =>{
-        console.log(`Data received from client: ${data.toString()}`);
+        const getData = data.toString();
+        console.log(`Data received from client: ${getData}`);
       });
 
       socket.on("end",  () => {
@@ -35,7 +36,8 @@ const serverObj = {
       }
       this.socket.once("data", (data) => {
         if (data) {
-          res(data.toString());
+          const getData = data.toString();
+          res(getData);
 
         } else {
           rej(new Error("server rejected request"));
@@ -52,7 +54,8 @@ const serverObj = {
       }
       this.socket.once("data", (data) => {
         if (data) {
-          res(data.toString());
+          const getData = data.toString();
+          res(getData);
         } else {
           rej(new Error("server rejected request"));
         }
@@ -67,7 +70,8 @@ const serverObj = {
       }
       this.socket.once("data", (data) => {
         if (data) {
-          res(data.toString());
+          const getData = data.toString();
+          res(getData);
         } else {
           rej(new Error("server rejected request"));
         }
